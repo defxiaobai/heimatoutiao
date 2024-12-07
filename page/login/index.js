@@ -10,6 +10,16 @@
     const form = document.querySelector('.login-form')
     const data = serialize(form,{empty:true,hash:true})
     console.log(data);
+    if(data.mobile.length < 11){
+        myAlert(false,"手机号不够11位")
+        return
+    }
+    if(data.code.length < 6){
+        myAlert(false,"验证码不够6位")
+        return
+    }
+
+
     // axios请求
     axios({
         url:'/v1_0/authorizations',
